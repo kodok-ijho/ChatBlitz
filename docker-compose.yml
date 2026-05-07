@@ -1,0 +1,16 @@
+services:
+  waha:
+    image: devlikeapro/waha:latest
+    container_name: nara-waha
+    ports:
+      - "3000:3000"
+    environment:
+      - WAHA_API_KEY=nara123
+      - WAHA_API_KEY_PLAIN=nara123
+      - WAHA_DASHBOARD_USERNAME=admin
+      - WAHA_DASHBOARD_PASSWORD=nara123
+      - WHATSAPP_HOOK_URL=http://host.docker.internal:3001/api/webhook/waha
+      - WHATSAPP_HOOK_EVENTS=message,session.status
+      - WHATSAPP_RESTART_ALL_SESSIONS=true
+      - WAHA_LOG_LEVEL=info
+    restart: unless-stopped
